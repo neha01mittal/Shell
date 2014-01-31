@@ -12,19 +12,20 @@ public class PWDTool extends ATool implements IPwdTool {
 	}
 
 	@Override
+	public String execute(File workingDir, String stdin) {
+		return getStringForDirectory(workingDir);
+	}
+
+	@Override
 	public String getStringForDirectory(File directory) {
+
 		// Error Handling
 		if (directory == null || !directory.exists() || !directory.isDirectory()) {
 			setStatusCode(1);
 			return "Error: Cannot find working directory";
 		}
-		// Processing the
+		// Processing
 		return directory.getAbsolutePath();
-	}
-
-	@Override
-	public String execute(File workingDir, String stdin) {
-		return getStringForDirectory(workingDir);
 	}
 
 }
